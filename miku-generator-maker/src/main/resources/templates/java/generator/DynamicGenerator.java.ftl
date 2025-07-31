@@ -1,35 +1,22 @@
-package com.miku.generator;
+package ${basePackage}.generator;
 
 import cn.hutool.core.io.FileUtil;
-import com.miku.model.MainTemplateConfig;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
 import java.io.File;
-import java.io.FileWriter;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.Writer;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.nio.charset.StandardCharsets;
 
 /**
  * 动态文件生成器
  */
 public class DynamicGenerator {
-
-    public static void main(String[] args) throws IOException, TemplateException {
-
-        String projectPath = System.getProperty("user.dir");
-        String inputPath = projectPath + File.separator + "src/main/resources/templates/MainTemplate.java.ftl";
-        String outputPath = projectPath + File.separator + "MainTemplate.java";
-
-        MainTemplateConfig mainTemplateConfig = new MainTemplateConfig();
-        mainTemplateConfig.setAuthor("miku");
-        mainTemplateConfig.setLoop(true);
-        mainTemplateConfig.setOutputText("求和结果：");
-
-        doGenerate(inputPath, outputPath, mainTemplateConfig);
-
-    }
 
     /**
      * 生成文件
@@ -55,18 +42,18 @@ public class DynamicGenerator {
         String templateName = new File(inputPath).getName();
         Template template = configuration.getTemplate(templateName);
 
-        // 如果文件不存在则创建文件和父目录
-        if (!FileUtil.exist(outputPath)) {
-            FileUtil.touch(outputPath);
+        // 文件不存在则创建文件和父目录
+        File outputFile = new File(outputPath);
+        if (!outputFile.exists()) {
+            FileUtil.mkdir(outputFile.getParentFile());
+            outputFile.createNewFile();
         }
 
+        // 使用 OutputStreamWriter 显式设置 UTF-8 编码
+        try (OutputStream fos = new FileOutputStream(outputFile); Writer out = new OutputStreamWriter(fos, StandardCharsets.UTF_8)) {
+            template.process(model, out);
+        }
 
-        // 生成
-        Writer out = new FileWriter(outputPath);
-        template.process(model, out);
-
-        // 生成文件后别忘了关闭哦
-        out.close();
     }
 
 

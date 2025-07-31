@@ -1,35 +1,18 @@
-package com.miku.generator;
+package com.miku.maker.generator.file;
 
 import cn.hutool.core.io.FileUtil;
-import com.miku.model.MainTemplateConfig;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Writer;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 
 /**
  * 动态文件生成器
  */
-public class DynamicGenerator {
+public class DynamicFileGenerator {
 
-    public static void main(String[] args) throws IOException, TemplateException {
-
-        String projectPath = System.getProperty("user.dir");
-        String inputPath = projectPath + File.separator + "src/main/resources/templates/MainTemplate.java.ftl";
-        String outputPath = projectPath + File.separator + "MainTemplate.java";
-
-        MainTemplateConfig mainTemplateConfig = new MainTemplateConfig();
-        mainTemplateConfig.setAuthor("miku");
-        mainTemplateConfig.setLoop(true);
-        mainTemplateConfig.setOutputText("求和结果：");
-
-        doGenerate(inputPath, outputPath, mainTemplateConfig);
-
-    }
 
     /**
      * 生成文件
@@ -60,8 +43,8 @@ public class DynamicGenerator {
             FileUtil.touch(outputPath);
         }
 
-
         // 生成
+
         Writer out = new FileWriter(outputPath);
         template.process(model, out);
 

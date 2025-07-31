@@ -1,5 +1,7 @@
 ### Custom Templete
 .idea
+generated
+target
 miku-generator.iml
 
 ### Java template
