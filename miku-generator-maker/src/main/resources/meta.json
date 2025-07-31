@@ -6,8 +6,9 @@
   "author": "miku",
   "createTime": "2023-11-22",
   "fileConfig": {
-    "inputRootPath": "W:/code/miku-generator/miku-generator-demo-projects/acm-template-pro",
+    "inputRootPath": ".source/acm-template-pro",
     "outputRootPath": "generated",
+    "sourceRootPath": "W:/code/miku-generator/miku-generator-demo-projects/acm-template-pro",
     "type": "dir",
     "files": [
       {
