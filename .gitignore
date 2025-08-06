@@ -1,5 +1,6 @@
 ### Custom Templete
 .idea
+.temp
 generated
 target
 miku-generator.iml

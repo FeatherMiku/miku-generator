@@ -1,6 +1,5 @@
 package com.miku.maker.generator.file;
 
-import com.miku.maker.model.DataModel;
 import freemarker.template.TemplateException;
 
 import java.io.File;
@@ -22,14 +21,5 @@ public class FileGenerator {
         String outputDynamicFilePath = outputPath + File.separator + "acm-template/src/com/miku/acm/MainTemplate.java";
         DynamicFileGenerator.doGenerate(inputDynamicFilePath, outputDynamicFilePath, model);
     }
-    public static void main(String[] args) throws TemplateException, IOException {
 
-        DataModel dataModel = new DataModel();
-        dataModel.setAuthor("miku");
-        dataModel.setLoop(true);
-        dataModel.setOutputText("求和结果：");
-
-        doGenerate(dataModel);
-
-    }
 }
