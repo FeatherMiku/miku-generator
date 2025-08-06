@@ -35,7 +35,9 @@ ${modelInfo?index + 1}）${modelInfo.fieldName}
 
 默认值：${modelInfo.defaultValue?c}
 
+<#if modelInfo.abbr??>
 缩写： -${modelInfo.abbr}
+</#if>
 
     <#-- 判断：这是一个分组吗？ -->
     <#elseif modelInfo.groupKey??>
@@ -47,7 +49,7 @@ ${modelInfo?index + 1}）${modelInfo.groupName} (核心模板分组)
     <#if modelInfo.models?? && modelInfo.models?has_content>
 包含的选项：
         <#list modelInfo.models as subModel>
-- **${subModel.fieldName}**: ${subModel.description} (缩写: -${subModel.abbr})
+- **${subModel.fieldName}**: ${subModel.description}<#if subModel.abbr??> (缩写: -${subModel.abbr})</#if>
         </#list>
     </#if>
 

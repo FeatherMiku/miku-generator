@@ -17,10 +17,10 @@ ${indent}private ${modelInfo.type} ${modelInfo.fieldName}<#if modelInfo.defaultV
 </#macro>
 
 <#-- 生成命令调用 -->
-<#macro generateCommand indent moedelInfo>
-${indent}System.out.println("输入${moedelInfo.groupName}配置：");
-${indent}CommandLine commandLine = new CommandLine(${moedelInfo.type}Command.class);
-${indent}commandLine.execute(${moedelInfo.allArgsStr});
+<#macro generateCommand indent modelInfo>
+${indent}System.out.println("输入${modelInfo.groupName}配置：");
+${indent}CommandLine ${modelInfo.groupKey}CommandLine = new CommandLine(${modelInfo.type}Command.class);
+${indent}${modelInfo.groupKey}CommandLine.execute(${modelInfo.allArgsStr});
 </#macro>
 
 
@@ -62,10 +62,10 @@ public class GenerateCommand implements Callable<Integer> {
         <#if modelInfo.groupKey??>
         <#if modelInfo.condition??>
         if (${modelInfo.condition}) {
-            <@generateCommand indent="            " moedelInfo=modelInfo />
+            <@generateCommand indent="            " modelInfo=modelInfo />
         }
         <#else>
-        <@generateCommand indent="        " moedelInfo=modelInfo />
+        <@generateCommand indent="        " modelInfo=modelInfo />
         </#if>
         </#if>
         </#list>
