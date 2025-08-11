@@ -325,7 +325,7 @@ public class TemplateMaker {
         // 指定原始项目路径
         String projectPath = System.getProperty("user.dir");
         String originProjectPath = new File(projectPath).getParent() + File.separator + "miku-generator-demo-projects/springboot-init";
-        String inputFilePath1 = "src/main/java/com/yupi/springbootinit/common";
+        String inputFilePath1 = "src/main/java/com/miku/springbootinit/common";
         String inputFilePath2 = "src/main/resources/application.yml";
 
         // 模型参数配置
