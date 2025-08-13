@@ -40,7 +40,7 @@ public class FreeMarkerTest {
 
         Map<String, Object> menuItem2 = new HashMap<>();
         menuItem2.put("url", "https://laoyujianli.com");
-        menuItem2.put("label", "老鱼简历");
+        menuItem2.put("label", "简历");
 
         menuItems.add(menuItem1);
         menuItems.add(menuItem2);

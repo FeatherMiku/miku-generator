@@ -3,6 +3,7 @@ package com.miku.maker.generator.main;
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.io.resource.ClassPathResource;
 import cn.hutool.core.util.StrUtil;
+import cn.hutool.core.util.ZipUtil;
 import com.miku.maker.generator.JarGenerator;
 import com.miku.maker.generator.ScriptGenerator;
 import com.miku.maker.generator.file.DynamicFileGenerator;
@@ -44,12 +45,13 @@ public abstract class GenerateTemplate {
 
     /**
      * 生成精简版程序
+     *
      * @param outputPath
      * @param jarPath
      * @param shellOutputFilePath
      * @param sourceCopyDestPath
      */
-    protected void buildDist(String outputPath, String jarPath, String shellOutputFilePath, String sourceCopyDestPath) {
+    protected String buildDist(String outputPath, String jarPath, String shellOutputFilePath, String sourceCopyDestPath) {
         String distOutputPath = outputPath + "-dist";
         // - 拷贝 jar 包
         String targetAbsolutePath = distOutputPath + File.separator + "target";
@@ -61,11 +63,25 @@ public abstract class GenerateTemplate {
         FileUtil.copy(shellOutputFilePath + ".bat", distOutputPath, true);
         // - 拷贝源模板文件
         FileUtil.copy(sourceCopyDestPath, distOutputPath, true);
+        return distOutputPath;
+    }
+
+    /**
+     * 制作压缩包
+     *
+     * @param outputPath
+     * @return
+     */
+    protected String buildZip(String outputPath) {
+        String zipPath = outputPath + ".zip";
+        ZipUtil.zip(outputPath, zipPath);
+        return zipPath;
     }
 
 
     /**
      * 封装脚本
+     *
      * @param outputPath
      * @param jarPath
      * @return
@@ -80,6 +96,7 @@ public abstract class GenerateTemplate {
 
     /**
      * 构建 jar 包
+     *
      * @param outputPath
      * @param meta
      * @return 返回 jar 包的相对路径
@@ -96,6 +113,7 @@ public abstract class GenerateTemplate {
 
     /**
      * 代码生成
+     * 
      * @param meta
      * @param outputPath
      * @throws IOException

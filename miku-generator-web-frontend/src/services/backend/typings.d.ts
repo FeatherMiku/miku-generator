@@ -66,7 +66,12 @@ declare namespace API {
   };
 
   type DeleteRequest = {
-    id?: number;
+    id?: string;
+  };
+
+  type downloadGeneratorByIdUsingGETParams = {
+    /** id */
+    id?: string;
   };
 
   type FileConfig = {
@@ -95,7 +100,7 @@ declare namespace API {
     description?: string;
     distPath?: string;
     fileConfig?: string;
-    id?: number;
+    id?: string;
     isDelete?: number;
     modelConfig?: string;
     name?: string;
@@ -103,7 +108,7 @@ declare namespace API {
     status?: number;
     tags?: string;
     updateTime?: string;
-    userId?: number;
+    userId?: string;
     version?: string;
   };
 
@@ -127,7 +132,7 @@ declare namespace API {
     description?: string;
     distPath?: string;
     fileConfig?: FileConfig;
-    id?: number;
+    id?: string;
     modelConfig?: ModelConfig;
     name?: string;
     picture?: string;
@@ -141,9 +146,9 @@ declare namespace API {
     current?: number;
     description?: string;
     distPath?: string;
-    id?: number;
+    id?: string;
     name?: string;
-    notId?: number;
+    notId?: string;
     orTags?: string[];
     pageSize?: number;
     searchText?: string;
@@ -151,7 +156,7 @@ declare namespace API {
     sortOrder?: string;
     status?: number;
     tags?: string[];
-    userId?: number;
+    userId?: string;
     version?: string;
   };
 
@@ -161,7 +166,7 @@ declare namespace API {
     description?: string;
     distPath?: string;
     fileConfig?: FileConfig;
-    id?: number;
+    id?: string;
     modelConfig?: ModelConfig;
     name?: string;
     picture?: string;
@@ -177,7 +182,7 @@ declare namespace API {
     description?: string;
     distPath?: string;
     fileConfig?: FileConfig;
-    id?: number;
+    id?: string;
     modelConfig?: ModelConfig;
     name?: string;
     picture?: string;
@@ -185,28 +190,28 @@ declare namespace API {
     tags?: string[];
     updateTime?: string;
     user?: UserVO;
-    userId?: number;
+    userId?: string;
     version?: string;
   };
 
   type getGeneratorVOByIdUsingGETParams = {
     /** id */
-    id?: number;
+    id?: string;
   };
 
   type getUserByIdUsingGETParams = {
     /** id */
-    id?: number;
+    id?: string;
   };
 
   type getUserVOByIdUsingGETParams = {
     /** id */
-    id?: number;
+    id?: string;
   };
 
   type LoginUserVO = {
     createTime?: string;
-    id?: number;
+    id?: string;
     updateTime?: string;
     userAvatar?: string;
     userName?: string;
@@ -288,13 +293,18 @@ declare namespace API {
     total?: number;
   };
 
+  type testDownloadFileUsingGETParams = {
+    /** filepath */
+    filepath?: string;
+  };
+
   type uploadFileUsingPOSTParams = {
     biz?: string;
   };
 
   type User = {
     createTime?: string;
-    id?: number;
+    id?: string;
     isDelete?: number;
     updateTime?: string;
     userAccount?: string;
@@ -319,7 +329,7 @@ declare namespace API {
 
   type UserQueryRequest = {
     current?: number;
-    id?: number;
+    id?: string;
     pageSize?: number;
     sortField?: string;
     sortOrder?: string;
@@ -341,7 +351,7 @@ declare namespace API {
   };
 
   type UserUpdateRequest = {
-    id?: number;
+    id?: string;
     userAvatar?: string;
     userName?: string;
     userProfile?: string;
@@ -350,7 +360,7 @@ declare namespace API {
 
   type UserVO = {
     createTime?: string;
-    id?: number;
+    id?: string;
     userAvatar?: string;
     userName?: string;
     userProfile?: string;
