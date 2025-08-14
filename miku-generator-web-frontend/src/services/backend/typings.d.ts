@@ -108,7 +108,7 @@ declare namespace API {
     status?: number;
     tags?: string;
     updateTime?: string;
-    userId?: string;
+    userId?: number;
     version?: string;
   };
 
@@ -148,7 +148,7 @@ declare namespace API {
     distPath?: string;
     id?: string;
     name?: string;
-    notId?: string;
+    notId?: number;
     orTags?: string[];
     pageSize?: number;
     searchText?: string;
@@ -156,7 +156,7 @@ declare namespace API {
     sortOrder?: string;
     status?: number;
     tags?: string[];
-    userId?: string;
+    userId?: number;
     version?: string;
   };
 
@@ -175,6 +175,11 @@ declare namespace API {
     version?: string;
   };
 
+  type GeneratorUseRequest = {
+    dataModel?: Record<string, any>;
+    id?: string;
+  };
+
   type GeneratorVO = {
     author?: string;
     basePackage?: string;
@@ -190,7 +195,7 @@ declare namespace API {
     tags?: string[];
     updateTime?: string;
     user?: UserVO;
-    userId?: string;
+    userId?: number;
     version?: string;
   };
 
