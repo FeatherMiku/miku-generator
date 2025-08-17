@@ -3,7 +3,7 @@ package com.miku.web.model.vo;
 import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
-import com.miku.web.meta.Meta;
+import com.miku.maker.meta.Meta;
 import com.miku.web.model.entity.Generator;
 import lombok.Data;
 import org.springframework.beans.BeanUtils;

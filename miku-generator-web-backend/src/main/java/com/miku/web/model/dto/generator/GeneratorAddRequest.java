@@ -1,6 +1,6 @@
 package com.miku.web.model.dto.generator;
 
-import com.miku.web.meta.Meta;
+import com.miku.maker.meta.Meta;
 import lombok.Data;
 
 import java.io.Serializable;
